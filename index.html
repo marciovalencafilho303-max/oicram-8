@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oicram 8</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="title"><span class="ico">🎞</span><span>Oicram 8 - [Untitled-1]</span><span class="wb" aria-hidden="true"><i>–</i><i>□</i><i class="x">✕</i></span></div>
+<div id="menubar"></div>
+<div id="app">
+  <aside id="tools"><div class="lbl">Ferramentas</div><div id="tgrid"></div><div class="lbl sz">Espessura</div><div id="sizes"></div></aside>
+  <main>
+    <div id="bar">
+      <div id="tab">Untitled-1*</div>
+      <span class="scene"><img src="icons/Scene.gif" alt=""> Scene 1</span>
+      <button id="zo" title="Diminuir zoom"><img src="icons/zoomOut.gif" alt="Diminuir zoom"></button><button id="zi" title="Aumentar zoom"><img src="icons/zoomIn.gif" alt="Aumentar zoom"></button>
+      <select id="zs"><option value="0.25">25%</option><option value="0.5">50%</option><option value="1" selected>100%</option><option value="1.5">150%</option><option value="2">200%</option><option value="4">400%</option></select>
+    </div>
+    <section id="tl">
+      <div id="tlb"></div>
+      <div id="ctl">
+        <button id="addL" title="Nova camada">＋ Camada</button>
+        <button id="delL" title="Excluir camada">🗑</button>
+        <button id="onion" title="Onion skin">Onion skin</button>
+        <button data-op="ins" title="Inserir quadro (F5)">F5</button>
+        <button data-op="kf" title="Quadro-chave (F6)">F6</button>
+        <button data-op="bk" title="Quadro-chave vazio (F7)">F7</button>
+        <button data-op="del" title="Remover quadro (Shift+F5)">⇧F5</button>
+        <button id="home" title="Início">⏮</button>
+        <button id="play" title="Reproduzir (Enter)">▶</button>
+        <span class="num" id="fno">1</span>
+        <label class="num"><input id="fps" type="number" min="1" max="60" value="12"> fps</label>
+        <span class="num" id="time">0.0s</span>
+      </div>
+    </section>
+    <div id="sw"><canvas id="stage"></canvas></div>
+    <section id="props">
+      <div class="ptabs"><b>Properties</b></div>
+      <div class="pbody">
+        <div class="pic">🎞</div>
+        <div><span class="pdoc">Document</span></div>
+        <label>Tamanho: <span class="val">550 × 400 pixels</span></label>
+        <label>Fundo: <input type="color" id="bgc" value="#ffffff"></label>
+        <label>Frame rate: <input type="number" id="fps2" min="1" max="60" value="12"> fps</label>
+        <label>Exportar: <button id="pexp">Exportar...</button></label>
+        <label>Preferências: <button id="pset">Configurações...</button></label>
+      </div>
+    </section>
+  </main>
+  <aside id="side">
+    <div class="ph2">▼ Color</div>
+    <div class="pb">
+      <label><span class="ci"><img src="icons/stroke.gif" alt=""> Traço</span> <input type="color" id="sc" value="#000000"></label>
+      <label><span class="ci"><img src="icons/fill.gif" alt=""> Preenchimento / pincel</span> <input type="color" id="fc" value="#0066cc"></label>
+      <button id="swap">⇄ Trocar cores</button>
+      <label>Fechar lacunas (balde)
+        <select id="gap"><option value="0">Não fechar</option><option value="3" selected>Pequenas</option><option value="6">Médias</option><option value="12">Grandes</option></select>
+      </label>
+    </div>
+    <div class="ph2">▼ Library - Untitled-1</div>
+    <div class="lh"><span>Name</span><span>Type</span></div>
+    <div id="lib"></div>
+  </aside>
+</div>
+
+<dialog id="dlg">
+  <h3>Exportar</h3>
+  <label>Formato
+    <select id="fmt">
+      <option value="png">Imagem PNG (quadro atual)</option>
+      <option value="zip">Sequência PNG (todos os quadros, .zip)</option>
+      <option value="webm">Vídeo WebM</option>
+      <option value="json">Projeto (.json)</option>
+    </select>
+  </label>
+  <label class="row2"><input type="checkbox" id="tr" checked> Remover fundo (transparente)</label>
+  <label>Cor do fundo (se não for transparente) <input type="color" id="ebg" value="#ffffff"></label>
+  <div class="acts"><button id="cancel">Cancelar</button><button id="go" class="pri">Exportar</button></div>
+</dialog>
+<dialog id="sdlg">
+  <h3>Configurações</h3>
+  <label>Zoom com o mouse
+    <select id="zmode">
+      <option value="btn">Somente pelo botão de zoom</option>
+      <option value="ctrl">Ctrl + scroll do mouse</option>
+      <option value="scroll">Somente scroll do mouse</option>
+    </select>
+  </label>
+  <div>Atalhos do teclado (clique e pressione a nova tecla; Backspace remove, Esc cancela):</div>
+  <div id="keys"></div>
+  <div class="acts"><button id="kreset">Restaurar padrões</button><button id="sclose" class="pri">Fechar</button></div>
+</dialog>
+<input type="file" id="open" accept=".json" hidden>
+<script src="app.js"></script>
+</body>
+</html>
